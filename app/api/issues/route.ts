@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
   // if validation fails return error with status 400
   if (!validation.success)
-    return NextResponse.json(validation.error.errors, {status: 400});
+    return NextResponse.json(validation.error.format(), {status: 400});
 
   // create a new Issue with title and description in the database
   const newIssue = await prisma.issue.create({
