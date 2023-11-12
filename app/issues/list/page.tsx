@@ -3,7 +3,7 @@ import { Button } from "@radix-ui/themes";
 import Link from "next/link";
 import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
-import IssueStatusBadge from "../components/IssueStatusBadge";
+import { IssueStatusBadge } from "@/app/components";
 import delay from "delay";
 import IssueActions from "./IssueActions";
 
