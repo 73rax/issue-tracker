@@ -14,7 +14,20 @@ const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = process.env.AUTHORISED_USER;
+      
+      if (profile?.email === isAllowedToSignIn) {
+        return true;
+      } else {
+        // Return false to display a default error message
+        return false;
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
+    },
+  },
 };
-
 
 export default authOptions;
