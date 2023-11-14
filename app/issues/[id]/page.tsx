@@ -5,7 +5,7 @@ import EditIssueButton from "./EditIssueButton";
 import IssueDetails from "./IssueDetails";
 import DeleteIssueButton from "./DeleteIssueButton";
 import { getServerSession } from "next-auth";
-import authOptions from "@/app/auth/AuthOptions";
+import authOptions from "@/app/auth/authOptions";
 import AssigneeSelect from "./AssigneeSelect";
 import { cache } from "react";
 
@@ -47,7 +47,7 @@ const IssueDetailPage = async ({ params }: Props) => {
 
 export async function generateMetadata({ params }: Props) {
   const issue = await fetchUser(parseInt(params.id));
-  
+
   return {
     title: issue?.title,
     description: "Details of issue " + issue?.id,
