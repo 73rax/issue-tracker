@@ -11,7 +11,7 @@ const AssignStatus = ({ issue }: { issue: Issue }) => {
     axios
       .patch("/api/issues/" + issue?.id, {
         status: status,
-      })
+      }).then((response) => toast.success("Successfully updated status!"))
       .catch(() => {
         toast.error("Changes could not be saved.");
       });
