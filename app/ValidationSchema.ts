@@ -18,4 +18,23 @@ export const patchIssueSchema = z.object({
     .max(255)
     .optional()
     .nullable(),
+  status: z
+    .string()
+    .optional()
+    .nullable()
+    .refine(
+      (value) => {
+        const isValidStatus = ["OPEN", "CLOSED", "IN_PROGRESS"].includes(
+          value!
+        );
+        return (
+          value === null ||
+          value === undefined ||
+          (isValidStatus && value.trim().length > 0)
+        );
+      },
+      {
+        message: "Must be a valid non-empty status value",
+      }
+    ),
 });
