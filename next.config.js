@@ -20,6 +20,9 @@ const { withSentryConfig } = require("@sentry/nextjs");
 module.exports = withSentryConfig(
   module.exports,
   {
+    experimental: {
+      instrumentationHook: true,
+    },
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 
